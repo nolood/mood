@@ -14,7 +14,6 @@ import Home from "./panels/Home";
 import OnBoarding from "./panels/Onboarding";
 import Ask from "./panels/Ask";
 import Templates from "./panels/Templates";
-import Calendar from "./panels/Calendar";
 import CalendarPage from "./panels/Calendar";
 import bridge from "@vkontakte/vk-bridge";
 import { DateTime } from "luxon";
@@ -27,6 +26,10 @@ const App = () => {
 
   useEffect(() => {
     const next = async () => {
+      bridge.send("VKWebAppStorageSet", {
+        key: "11_12_2023",
+        value: "",
+      });
       bridge
         .send("VKWebAppStorageGetKeys", {
           count: 40,
